@@ -7,3 +7,14 @@ body {
     color: #332972;
     text-decoration: none;
   }
+  button{
+     padding: 7px;
+     font-size: 100%;
+     display: block;
+     margin: 5px;
+     background-color: #332972;
+     color: white;
+     border-radius: 10%;
+
+  }
+ 

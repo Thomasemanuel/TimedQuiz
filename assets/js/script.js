@@ -21,7 +21,7 @@
       var questionIndex = 0;
       var correctCount = 0;
       
-      var time = 20;
+      var time = 200;
       var intervalId;
 
       function endQuiz() {
@@ -56,7 +56,7 @@
         var choicesLenth = choices.length;
       
         for (var i = 0; i < choicesLenth; i++) {
-          var questionListItem = document.createElement("li");
+          var questionListItem = document.createElement("button");
           questionListItem.textContent = choices[i];
           optionListEl.append(questionListItem);
         }
@@ -72,7 +72,7 @@
       
       function checkAnswer(event) {
         clearInterval(intervalId);
-        if (event.target.matches("li")) {
+        if (event.target.matches("button")) {
           var answer = event.target.textContent;
           if (answer === questions[questionIndex].answer) {
             questionResultEl.textContent = "Correct";
