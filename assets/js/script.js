@@ -57,8 +57,12 @@
       
         for (var i = 0; i < choicesLenth; i++) {
           var questionListItem = document.createElement("button");
-          questionListItem.textContent = choices[i];
+          //show number in button
+          questionListItem.textContent = i + 1 + ". " + choices[i];
+          
+          
           optionListEl.append(questionListItem);
+          
         }
       }
       

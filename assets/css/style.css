@@ -15,6 +15,18 @@ body {
      background-color: #332972;
      color: white;
      border-radius: 10%;
-
+     list-style: numeric;
   }
  
+  .hero {
+    margin: 100px auto 0 auto;
+    max-width: 600px;
+  }
+
+  .result{
+    font-style: italic;
+    margin-top: 20px;
+    padding-top: 10px;
+    color: gray;
+    border-top: 2px solid #A2A2A2;
+  }
