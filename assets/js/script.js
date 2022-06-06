@@ -20,11 +20,12 @@
       var timerEl = document.querySelector("#time");
       var startBtn = document.querySelector("#start");
       var resultEl = document .querySelector("#question-result");
+      
       var questionIndex = 0;
       var correctCount = 0;
       
-      var time = 200;
-      var intervalId =2000;
+      var time = 75;
+      var intervalId 
 
       //start quiz 
       function startQuiz(event){
@@ -39,8 +40,16 @@
       }
       function endQuiz() {
         clearInterval(intervalId);
-        var body = document.body;
-        body.innerHTML = "Game over, You scored " + score;
+         // hide questions section
+        questionsEl.setAttribute("class", "hide");
+        // show end screen
+        var endScreenEl = document.querySelector("#end-screen");
+        endScreenEl.removeAttribute("class");
+        // show final score
+        var finalScoreEl = document.querySelector("#score");
+        finalScoreEl.textContent = score;
+
+ 
       }
       
       function updateTime() {
@@ -100,7 +109,7 @@
             correctCount++;
           } else {
             questionResultEl.textContent = "Incorrect";
-            time = time - 2;
+            time = time - 15;
             timerEl.textContent = time;
           }
           
