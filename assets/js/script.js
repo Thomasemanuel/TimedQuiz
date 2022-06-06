@@ -21,7 +21,7 @@
       var startBtn = document.querySelector("#start");
       var resultEl = document .querySelector("#question-result");
       var score =0;
-      
+
       var questionIndex = 0;
       var correctCount = 0;
       
@@ -40,6 +40,7 @@
         renderQuestion();
       }
       function endQuiz() {
+        time = 1;
         clearInterval(intervalId);
          // hide questions section
         questionsEl.setAttribute("class", "hide");
@@ -58,12 +59,13 @@
         timerEl.textContent = time;
         
         if (time <= 0) {
+
           endQuiz();
         }
       }
       
       function renderQuestion() {
-        
+        debugger;
         if (time == 0) {
           updateTime();
           return;
@@ -94,8 +96,9 @@
       
       function nextQuestion() {
         questionIndex++;
-        if (questionIndex === questions.length) {score =time;
-          time = 0;
+        if (questionIndex === questions.length) {
+          score =time;
+          endQuiz();
         }
         renderQuestion();
       }
