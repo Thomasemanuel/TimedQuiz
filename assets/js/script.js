@@ -19,6 +19,7 @@
       var questionResultEl = document.querySelector("#question-result");
       var timerEl = document.querySelector("#timer");
       var startBtn = document.querySelector("#start");
+      var resultEl = document .querySelector("#question-result");
       var questionIndex = 0;
       var correctCount = 0;
       
@@ -99,8 +100,16 @@
             time = time - 2;
             timerEl.textContent = time;
           }
+          
+          console.log(questions[questionIndex].answer);
+          console.log(answer);
         }
-        setTimeout(nextQuestion, 2000);
+        // flash resulton page for 2 seconds
+        resultEl.setAttribute("class", "result");
+        setTimeout(function() {
+          resultEl.setAttribute("class", "result hide");
+        }, 2000);
+       
       }
       //start button
       startBtn.onclick = startQuiz
