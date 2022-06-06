@@ -20,6 +20,7 @@
       var timerEl = document.querySelector("#time");
       var startBtn = document.querySelector("#start");
       var resultEl = document .querySelector("#question-result");
+      var score =0;
       
       var questionIndex = 0;
       var correctCount = 0;
@@ -73,7 +74,6 @@
         questionEl.textContent = questions[questionIndex].question;
       
         optionListEl.innerHTML = "";
-        questionResultEl.innerHTML = "";
       
         var choices = questions[questionIndex].choices;
         var choicesLenth = choices.length;
@@ -100,7 +100,7 @@
         renderQuestion();
       }
       
-      function checkAnswer(event) {
+      function checkAnswer(event,) {
         clearInterval(intervalId);
         if (event.target.matches("button")) {
           var answer = event.target.textContent;
@@ -120,7 +120,7 @@
         resultEl.setAttribute("class", "result");
         setTimeout(function() {
           resultEl.setAttribute("class", "result hide");
-        }, 2000);
+        }, 1000);
         nextQuestion();
        
       }

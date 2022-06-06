@@ -22,7 +22,6 @@ body {
      background-color: #332972;
      color: white;
      border-radius: 10%;
-     list-style: numeric;
   }
 
   button:hover {
@@ -36,6 +35,7 @@ body {
 
   .result{
     font-style: italic;
+    font-size: 120%;
     margin-top: 20px;
     padding-top: 10px;
     color: gray;
@@ -50,4 +50,12 @@ body {
 
   .hide{
     display: none;
+  }
+
+  .start-screen{
+      text-align: center;
+  }
+
+  .start-screen button{
+      display: inline-block;
   }
