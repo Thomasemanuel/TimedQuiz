@@ -32,6 +32,7 @@
         startScreenEl.setAttribute("class", "hide")
         //show questions
         questionsEl.removeAttribute("class");
+
         //call renderquestion
         renderQuestion();
       }
