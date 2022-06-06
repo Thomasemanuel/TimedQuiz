@@ -17,16 +17,13 @@ body {
   button{
      padding: 7px;
      font-size: 100%;
-     display: block;
+     display: inline-block;
      margin: 5px;
      background-color: #332972;
      color: white;
      border-radius: 10%;
   }
 
-  button:hover {
-    background-color: #AD41E1;
-  }
  
   .hero {
     margin: 100px auto 0 auto;
@@ -56,6 +53,6 @@ body {
       text-align: center;
   }
 
-  .start-screen button{
-      display: inline-block;
+  .choices button{
+      display: block;
   }
