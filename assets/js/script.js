@@ -17,14 +17,14 @@
       var questionEl =document.querySelector("#question");
       var optionListEl = document.querySelector("#option-list");
       var questionResultEl = document.querySelector("#question-result");
-      var timerEl = document.querySelector("#timer");
+      var timerEl = document.querySelector("#time");
       var startBtn = document.querySelector("#start");
       var resultEl = document .querySelector("#question-result");
       var questionIndex = 0;
       var correctCount = 0;
       
       var time = 200;
-      var intervalId;
+      var intervalId =2000;
 
       //start quiz 
       function startQuiz(event){
@@ -40,12 +40,13 @@
       function endQuiz() {
         clearInterval(intervalId);
         var body = document.body;
-        body.innerHTML = "Game over, You scored " + correctCount;
+        body.innerHTML = "Game over, You scored " + score;
       }
       
       function updateTime() {
         time--;
         timerEl.textContent = time;
+        
         if (time <= 0) {
           endQuiz();
         }
@@ -71,18 +72,20 @@
         for (var i = 0; i < choicesLenth; i++) {
           var questionListItem = document.createElement("button");
           //show number in button
-          questionListItem.textContent = i + 1 + ". " + choices[i];
+          questionListItem.textContent =  choices[i];
           //event listener for clicking answer
           optionListEl.addEventListener("click", checkAnswer);
           //show on page
           optionListEl.append(questionListItem);
           
+          
         }
+
       }
       
       function nextQuestion() {
         questionIndex++;
-        if (questionIndex === questions.length) {
+        if (questionIndex === questions.length) {score =time;
           time = 0;
         }
         renderQuestion();
@@ -109,6 +112,7 @@
         setTimeout(function() {
           resultEl.setAttribute("class", "result hide");
         }, 2000);
+        nextQuestion();
        
       }
       //start button
