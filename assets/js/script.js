@@ -22,7 +22,7 @@
       var resultEl = document .querySelector("#question-result");
       var saveBtn = document.querySelector("#save");
       var initialsEl = document.getElementById('initials');
-      
+      var clearBtn = document.getElementById("clear");
       
 
       var score =0;
@@ -132,6 +132,12 @@
         nextQuestion();
       }
 
+       //clear highscores
+       function clearHighscores() {
+        window.localStorage.removeItem("highscores");
+        window.location.reload();
+      }  
+
       function printScores(){
         
         //get scores from local storage
@@ -146,11 +152,12 @@
         var  scoresList = document.querySelector("#highscores")
         scoresList.appendChild(scores);
         });
-
-
+         //clear button
+        clearBtn.onclick = clearHighscores;
       }
+
         function saveScore(){
-          debugger;
+          var highscores = JSON.parse(window.localStorage.getItem("highscores")) ;
           var initials = initialsEl.value.trim();
           console.log(initialsEl);
           console.log(initials);
@@ -159,7 +166,7 @@
             alert("You need to enter at least one initial!");
             endQuiz();
           }else{
-            var highscores =JSON.parse(window.localStorage.getItem("highscores"))
+            var highscores =JSON.parse(window.localStorage.getItem("highscores"))|| [];
             // format new entry to be saved for user
                var userData ={
                 score: score,
@@ -174,9 +181,7 @@
               window.location.href = "highscores.html";
               
           }
-         
-        }
-        
+        }     
         
       //start button
       startBtn.onclick = startQuiz;
