@@ -137,7 +137,7 @@
             
           } else {
             questionResultEl.textContent = "Incorrect";
-            time = time - 15;
+            time = time - 10;
             timerEl.textContent = time;
           }
           
