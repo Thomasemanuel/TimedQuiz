@@ -20,8 +20,12 @@
       var timerEl = document.querySelector("#time");
       var startBtn = document.querySelector("#start");
       var resultEl = document .querySelector("#question-result");
-      var score =0;
+      var saveBtn = document.querySelector("#save");
+      var initialsEl = document.getElementById('initials');
+      
+      
 
+      var score =0;
       var questionIndex = 0;
       var correctCount = 0;
       
@@ -41,6 +45,7 @@
       }
       function endQuiz() {
         time = 1;
+        //stop clock
         clearInterval(intervalId);
          // hide questions section
         questionsEl.setAttribute("class", "hide");
@@ -65,11 +70,11 @@
       }
       
       function renderQuestion() {
-        debugger;
         if (time == 0) {
           updateTime();
           return;
         }
+        
       
         intervalId = setInterval(updateTime, 1000);
         
@@ -109,7 +114,7 @@
           var answer = event.target.textContent;
           if (answer === questions[questionIndex].answer) {
             questionResultEl.textContent = "Correct";
-            correctCount++;
+            
           } else {
             questionResultEl.textContent = "Incorrect";
             time = time - 15;
@@ -119,13 +124,63 @@
           console.log(questions[questionIndex].answer);
           console.log(answer);
         }
-        // flash resulton page for 2 seconds
+        // flash resulton page fora second
         resultEl.setAttribute("class", "result");
         setTimeout(function() {
           resultEl.setAttribute("class", "result hide");
         }, 1000);
         nextQuestion();
-       
       }
+
+      function printScores(){
+        
+        //get scores from local storage
+        var highscores = JSON.parse(window.localStorage.getItem("highscores"));
+        //sort highscores by descending order
+        highscores.sort(function(a, b){return b.score - a.score;});
+        //each score is an li element
+        highscores.forEach(function(userData){
+        var scores =document.createElement('li');
+        scores.textContent= userData.initials + ' - ' + userData.score;
+        //add to page
+        var  scoresList = document.querySelector("#highscores")
+        scoresList.appendChild(scores);
+        });
+
+
+      }
+        function saveScore(){
+          debugger;
+          var initials = initialsEl.value.trim();
+          console.log(initialsEl);
+          console.log(initials);
+          //if empty alert
+          if (initials.length === 0){
+            alert("You need to enter at least one initial!");
+            endQuiz();
+          }else{
+            var highscores =JSON.parse(window.localStorage.getItem("highscores"))
+            // format new entry to be saved for user
+               var userData ={
+                score: score,
+                initials: initials
+              };
+
+              console.log(userData);
+              highscores.push(userData);
+              // save to localstorage
+              window.localStorage.setItem("highscores", JSON.stringify(highscores));
+              // redirect to next page
+              window.location.href = "highscores.html";
+              
+          }
+         
+        }
+        
+        
       //start button
-      startBtn.onclick = startQuiz
+      startBtn.onclick = startQuiz;
+
+      // user clicks button to submit initials
+      saveBtn.onclick = saveScore;
+
